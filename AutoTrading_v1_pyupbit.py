@@ -15,7 +15,7 @@ def cal_target(ticker):
     return target
 
 #%% 객체생성
-f = open("OpenAPIKey.txt")
+f = open("OpenAPIKey.txt") #경로설정필요
 lines = f.readlines()
 access = lines[1].strip()
 access = access.split()
@@ -45,7 +45,7 @@ trading_log={}
 # trading_log['buying_balance']=[]
 # trading_log['state']=[]
 #%% log_file 생성
-f = open('trading_log.txt', 'w')
+f = open('trading_log.txt', 'w') #경로설정필요
 f.close()
 
 #%% 1초에 한 번 현재시간과 비트코인 현재가 출력
@@ -74,7 +74,7 @@ while True:
         op_mode = False
         time.sleep(10) #매도 이후 목표가 갱신되기까지 프로그램 정지
         trading_log['state']=log_str
-        f = open("/home/ubuntu/usbdisk/upbit/trading_log.txt", "a")
+        f = open("trading_log.txt", "a") #경로설정필요
         dict_save=repr(trading_log)
         f.write(dict_save+'\n')
         f.close()
