@@ -5,13 +5,13 @@ import datetime
 
 #%% 목표가 구하기(변동성 돌파 전략)
 def cal_target(ticker):
-    df = pyupbit.get_ohlcv(ticker, "day")
+    df = pyupbit.get_ohlcv(ticker, "minute240")
     print(df.tail())
-    yesterday = df.iloc[-2]
-    today = df.iloc[-1]
+    before = df.iloc[-2]
+    after = df.iloc[-1]
     
-    yesterday_range = yesterday['high']-yesterday['low']
-    target = today['open'] + yesterday_range*0.5
+    before_range = before['high']-before['low']
+    target = after['open'] + before_range*0.4
     return target
 
 #%% 객체생성
